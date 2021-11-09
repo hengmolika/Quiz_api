@@ -66,7 +66,7 @@ class AuthorController extends Controller
             'province' => 'nullable'
         ]);
 
-        $author = findOrFail($id);
+        $author = Author::findOrFail($id);
         $author->name = $request->name;
         $author->age = $request->age;
         $author->province = $request->province;

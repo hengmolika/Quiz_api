@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
-
+use App\Http\Resources\BookResource;
 class BookController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        return Book::get();
+        return BookResource::collection(Book::orderBy('id', 'DESC')->get());
     }
 
     /**
@@ -64,7 +64,7 @@ class BookController extends Controller
             'body' => 'min:3|max:50'
         ]);
 
-        $book = findOrFail($id);
+        $book = Book::findOrFail($id);
         $book->author_id = $request->author_id;
         $book->title = $request->title;
         $book->body = $request->body;
