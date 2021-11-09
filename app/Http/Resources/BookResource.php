@@ -16,10 +16,11 @@ class BookResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
+            "id" => $this-> id,
             "title" => $this->title,
             "body" => $this->body,
-            "created_at" => $this->created_at->format('D, m F Y | H:i:s A'),
-            "updated_at" => $this->updated_at->format('D, m F Y | H:i:s A')
+            "created_at" => $this->created_at->format('D, d M Y | H:i:s A'),
+            "updated_at" => $this->updated_at->format('D, d M Y | H:i:s A')
         ];
     }
 }
